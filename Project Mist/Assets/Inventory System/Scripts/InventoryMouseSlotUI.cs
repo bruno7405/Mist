@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventoryMouseSlotUI : MonoBehaviour
@@ -36,7 +37,7 @@ public class InventoryMouseSlotUI : MonoBehaviour
         // Follow mouse
         transform.position = Input.mousePosition + (Vector3) offset;
             
-        if (Input.GetMouseButtonDown(0))
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             // If not over UI
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -44,7 +45,6 @@ public class InventoryMouseSlotUI : MonoBehaviour
                 // Drop item
                 //ItemSpawnManager.instance.SpawnItemOnPlayer(itemData, quantity);
                 PlayerEquip.instance.DropItem(itemData, quantity);
-                //playerEquip.DestroyEquipped();
                 Clear();
             }
         }

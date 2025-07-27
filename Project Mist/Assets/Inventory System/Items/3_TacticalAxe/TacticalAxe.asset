@@ -16,6 +16,6 @@ MonoBehaviour:
   name: Tactical Axe
   description: An axe with a perfect weight balance, allowing for fast swings.
   maxStackSize: 1
-  itemImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  itemImage: {fileID: 21300000, guid: 5f87254ca5012804b9818f311665f3b5, type: 3}
   droppedItem: {fileID: 4684951679471522414, guid: 0767dff6ecfbcdb4cb0b1dd798490a58, type: 3}
   equippedItem: {fileID: 4684951679471522414, guid: 1375e2af10260b34190af794aa9a5300, type: 3}
