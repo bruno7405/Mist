@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f6d148d888ffbf54b9afe9936dfaec1f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244662
+  packageName: Procedural Walk Animation
+  packageVersion: 1.0.0
+  assetPath: Assets/Procedural Walk Animation/Prefabs/Unity 3rd person cameras/MainCamera.prefab
+  uploadId: 567945

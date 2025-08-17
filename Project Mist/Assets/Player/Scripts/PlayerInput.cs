@@ -118,6 +118,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context)
     {
+        if (!active) return;
         playerInteraction.Interact();
     }
 
@@ -127,7 +128,6 @@ public class PlayerInput : MonoBehaviour
         if (inventoryOpen) return;
 
         var key = context.control.name;
-        Debug.Log(key);
         switch (key)
         {
             case "1":

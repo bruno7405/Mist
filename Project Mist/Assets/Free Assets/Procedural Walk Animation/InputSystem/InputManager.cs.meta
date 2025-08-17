@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: be4c96f2a8020784f81eb7be3d156780
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244662
+  packageName: Procedural Walk Animation
+  packageVersion: 1.0.0
+  assetPath: Assets/Procedural Walk Animation/InputSystem/InputManager.cs
+  uploadId: 567945

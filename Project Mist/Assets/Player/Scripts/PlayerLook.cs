@@ -13,6 +13,7 @@ public class PlayerLook : MonoBehaviour
     float xRotation;
     float yRotation;
 
+
     void Start()
     {
         player = this.gameObject;
@@ -39,5 +40,18 @@ public class PlayerLook : MonoBehaviour
     {
         if (canLookAround) canLookAround = false;
         else canLookAround = true;
+    }
+
+    public void LookAt(Vector3 lookPoint)
+    {
+        Debug.Log("BOO");
+        Vector3 camPos = cameraHolder.transform.position;
+
+        cameraHolder.transform.LookAt(lookPoint);
+    }
+
+    public void DisableLook()
+    {
+        canLookAround = false;
     }
 }

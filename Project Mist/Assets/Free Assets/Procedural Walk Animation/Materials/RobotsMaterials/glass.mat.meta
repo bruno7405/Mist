@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4e83202a4b2dead40984052993cb1c9c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244662
+  packageName: Procedural Walk Animation
+  packageVersion: 1.0.0
+  assetPath: Assets/Procedural Walk Animation/Materials/RobotsMaterials/glass.mat
+  uploadId: 567945

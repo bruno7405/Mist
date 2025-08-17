@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66c48cfa728af984db6a9f2630bacb2c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244662
+  packageName: Procedural Walk Animation
+  packageVersion: 1.0.0
+  assetPath: Assets/Procedural Walk Animation/Environment/UniversalRenderPipelineGlobalSettings.asset
+  uploadId: 567945

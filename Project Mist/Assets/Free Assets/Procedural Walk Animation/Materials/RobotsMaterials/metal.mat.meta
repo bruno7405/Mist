@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5a6d229b88b28b47a5cf949d298fdff
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244662
+  packageName: Procedural Walk Animation
+  packageVersion: 1.0.0
+  assetPath: Assets/Procedural Walk Animation/Materials/RobotsMaterials/metal.mat
+  uploadId: 567945

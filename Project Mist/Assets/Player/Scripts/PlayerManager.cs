@@ -1,8 +1,15 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    [SerializeField] PlayerInput playerInput;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] PlayerLook playerLook;
+    
+    [SerializeField] CinemachineImpulseSource jumpscareShake;
+
     public GameObject player;
 
     private int health = 100; 
@@ -22,8 +29,6 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int i)
     {
         health -= i;
-        // visual effects in UI
-        // SFX
 
         if (health <= 0) Death();
     }
@@ -32,4 +37,13 @@ public class PlayerManager : MonoBehaviour
     {
 
     }
+
+    public void TriggerJumpscare(Vector3 pos)
+    {
+        playerLook.LookAt(pos);
+        PlayerInput.active = false;
+        jumpscareShake.GenerateImpulse();
+    }
+
+
 }
