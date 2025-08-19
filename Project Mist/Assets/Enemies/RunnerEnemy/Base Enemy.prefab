@@ -1964,7 +1964,7 @@ GameObject:
   - component: {fileID: 9099442178785347993}
   - component: {fileID: 4637800027560218065}
   m_Layer: 8
-  m_Name: Runner Enemy
+  m_Name: Base Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
