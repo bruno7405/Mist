@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -33,16 +34,19 @@ public class PlayerManager : MonoBehaviour
         if (health <= 0) Death();
     }
 
-    public void Death()
+    public IEnumerator Death()
     {
-
+        PlayerInput.active = false;
+        // Fade to black
+        yield return new WaitForSeconds(1f);    
+        GameManager.OnLevelReset();
     }
 
     public void TriggerJumpscare(Vector3 pos)
     {
         playerLook.LookAt(pos);
-        PlayerInput.active = false;
         jumpscareShake.GenerateImpulse();
+        StartCoroutine(Death());
     }
 
 

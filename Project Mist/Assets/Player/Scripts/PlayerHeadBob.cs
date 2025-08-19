@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class PlayerHeadBob : MonoBehaviour
 {
-    [SerializeField] private bool enable = true;
     [SerializeField, Range(0, 0.01f)] private float camYAmplitude = 0.015f;
     [SerializeField, Range(0, 0.01f)] private float camXAmplitude = 0.015f;
     [SerializeField, Range(0, 30)] private float frequency = 10f;
     private float sprintMulitplier = 1.5f;
 
-    [SerializeField] Transform camera = null;
+    [SerializeField] Transform cam = null;
     [SerializeField] Transform cameraHolder = null;
 
     private Vector3 startPos;
@@ -17,19 +16,17 @@ public class PlayerHeadBob : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        startPos = camera.localPosition;
+        startPos = cam.localPosition;
 
         sprintMulitplier = playerMovement.GetSprintMultiplier();
     }
 
     private void Update()
     {
-        if (!enable) return;
-
         CheckMotion();
         ResetCamPos();
 
-        camera.LookAt(FocusTarget());
+        cam.LookAt(FocusTarget());
     }
 
     private void HeadBob(float mulitplier)
@@ -38,7 +35,7 @@ public class PlayerHeadBob : MonoBehaviour
         difference.y += Mathf.Sin(Time.time * frequency * mulitplier) * camYAmplitude;
         difference.x += Mathf.Cos(Time.time * frequency * mulitplier / 2) * camXAmplitude;
 
-        camera.localPosition += difference;
+        cam.localPosition += difference;
     }
 
     /// <summary>
@@ -60,8 +57,8 @@ public class PlayerHeadBob : MonoBehaviour
 
     private void ResetCamPos()
     {
-        if (camera.localPosition == startPos) return;
-        camera.localPosition = Vector3.Lerp(camera.localPosition, startPos, 1 * Time.deltaTime);
+        if (cam.localPosition == startPos) return;
+        cam.localPosition = Vector3.Lerp(cam.localPosition, startPos, 1 * Time.deltaTime);
     }
 
     private Vector3 FocusTarget()
