@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    private CharacterController controller;
+    [SerializeField] CharacterController controller;
 
     [Header("Movement values")]
     [SerializeField] private float walkSpeed;
@@ -19,14 +19,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping values")]
     public bool isGrounded = false;
     private bool canJump;
-    private const float GRAVITY = -9.8f;
+    private const float GRAVITY = -10f;
     [SerializeField] float gravityMultiplier;
     [SerializeField] private float jumpOffset; // for smooth jumping
-    [SerializeField] private float groundDistance; // distance from the ground which "counts" as ground
-    [SerializeField] private Transform feet; // position of the player's feet
     [SerializeField] private LayerMask groundMask; // layer for "ground" gameobjects
 
     private Vector3 verticalVelocity; // current vertical velocity of player
+
+    private float sphereCastVerticalOffset;
+    private Vector3 castOrigin;
 
     public static PlayerMovement Instance { get; private set; }
 
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        sphereCastVerticalOffset = controller.height / 2f - controller.radius;
+        castOrigin = transform.position + Vector3.down * sphereCastVerticalOffset;
         Vertical();
     }
 
@@ -73,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void HandleJump(InputAction jumpAction)
     {
-        canJump = Physics.CheckSphere(feet.position, jumpOffset, groundMask);
+        canJump = Physics.CheckSphere(castOrigin, controller.radius + jumpOffset, groundMask);
         if (jumpAction.triggered && canJump)
         {
             verticalVelocity.y = jumpVelocity; // set initial velocity (pos)
@@ -86,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Vertical()
     {
-        isGrounded = Physics.CheckSphere(feet.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(castOrigin, controller.radius + 0.02f, groundMask);
         if (!isGrounded) verticalVelocity.y += GRAVITY * gravityMultiplier * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
     }
@@ -113,9 +116,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(feet.position, groundDistance);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(castOrigin, controller.radius + 0.02f);
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(feet.position, groundDistance);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(feet.position, jumpOffset);
+        Gizmos.DrawWireSphere(castOrigin, controller.radius + jumpOffset);
     }
 }

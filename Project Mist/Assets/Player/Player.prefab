@@ -237,7 +237,8 @@ MonoBehaviour:
   isWalking: 0
   isSprinting: 0
   isGrounded: 0
-  gravityMultiplier: 2
+  jumpCooldown: 0.5
+  gravityMultiplier: 1.8
   jumpOffset: 0.3
   groundDistance: 0.1
   feet: {fileID: 3242426676343969214}
@@ -413,8 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e574945fbccaa4e861dae0d3e927d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camYAmplitude: 0.00601
-  camXAmplitude: 0.00388
+  camYAmplitude: 0.00509
+  camXAmplitude: 0.00229
   frequency: 14.7
   cam: {fileID: 655622084045267179}
   cameraHolder: {fileID: 5463386490162281571}
