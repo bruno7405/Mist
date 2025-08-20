@@ -24,19 +24,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpOffset; // for smooth jumping
     [SerializeField] private LayerMask groundMask; // layer for "ground" gameobjects
 
-    private Vector3 verticalVelocity; // current vertical velocity of player
-
     private float sphereCastVerticalOffset;
     private Vector3 castOrigin;
 
+    // character controller movement vector
     Vector3 moveVector;
 
-    public static PlayerMovement Instance { get; private set; }
 
     void Awake()
     {
-        controller = this.GetComponent<CharacterController>();
-        Instance = this;
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -97,6 +94,22 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(castOrigin, controller.radius + 0.02f, groundMask);
         if (!isGrounded) moveVector.y += GRAVITY * gravityMultiplier * Time.deltaTime;
+
+        // Slide down slopes
+        if (Physics.SphereCast(castOrigin, controller.radius - 0.01f, Vector3.down, 
+            out var hit, 0.05f, ~LayerMask.GetMask("Player"), QueryTriggerInteraction.Ignore))
+        {
+            var collider = hit.collider;
+            var normal = hit.normal;
+            var angle = Vector3.Angle(Vector3.up, normal);
+
+            if (angle > controller.slopeLimit)
+            {
+                var yInverse = 1f - normal.y;
+                moveVector.x += yInverse * normal.x * 3;
+                moveVector.z += yInverse * normal.z * 3;
+            }
+        }
     }
 
     public bool GetIsWalking()

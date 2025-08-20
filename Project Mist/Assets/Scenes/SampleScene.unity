@@ -11786,10 +11786,6 @@ PrefabInstance:
       propertyPath: groundDistance
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 7783314958399952633, guid: bf27bfafe092f92488462bd833ae68ea, type: 3}
-      propertyPath: gravityMultiplier
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
