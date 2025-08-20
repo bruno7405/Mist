@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private float sphereCastVerticalOffset;
     private Vector3 castOrigin;
 
+    Vector3 moveVector;
+
     public static PlayerMovement Instance { get; private set; }
 
     void Awake()
@@ -41,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
     {
         sphereCastVerticalOffset = controller.height / 2f - controller.radius;
         castOrigin = transform.position + Vector3.down * sphereCastVerticalOffset;
+
         Vertical();
+        controller.Move(moveVector * Time.deltaTime);
     }
 
     public void HandleMovement(Vector2 input, InputAction sprintAction)
@@ -49,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         if (input.magnitude <= 0)
         {
             isWalking = false;
+            moveVector.x = 0;
+            moveVector.z = 0;
             return;
         }
         else isWalking = true;
@@ -66,8 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
         float verticalSpeed = input.y * walkSpeed * speedMultiplier;
         float horizonalSpeed = input.x * walkSpeed * speedMultiplier;
-        Vector3 moveVector = (transform.right * horizonalSpeed) + (transform.forward * verticalSpeed);
-        controller.Move(moveVector * Time.deltaTime);
+        moveVector.x = (transform.right * horizonalSpeed).x + (transform.forward * verticalSpeed).x;
+        moveVector.z = (transform.right * horizonalSpeed).z + (transform.forward * verticalSpeed).z;
     }
 
     /// <summary>
@@ -79,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = Physics.CheckSphere(castOrigin, controller.radius + jumpOffset, groundMask);
         if (jumpAction.triggered && canJump)
         {
-            verticalVelocity.y = jumpVelocity; // set initial velocity (pos)
+            moveVector.y = jumpVelocity; // set initial velocity (pos)
         }
     }
 
@@ -90,8 +96,7 @@ public class PlayerMovement : MonoBehaviour
     private void Vertical()
     {
         isGrounded = Physics.CheckSphere(castOrigin, controller.radius + 0.02f, groundMask);
-        if (!isGrounded) verticalVelocity.y += GRAVITY * gravityMultiplier * Time.deltaTime;
-        controller.Move(verticalVelocity * Time.deltaTime);
+        if (!isGrounded) moveVector.y += GRAVITY * gravityMultiplier * Time.deltaTime;
     }
 
     public bool GetIsWalking()
@@ -109,17 +114,11 @@ public class PlayerMovement : MonoBehaviour
         return sprintMultiplier;
     }
 
-    public Transform GetTransform()
-    {
-        return transform;
-    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(castOrigin, controller.radius + 0.02f);
-        //Gizmos.color = Color.green;
-        //Gizmos.DrawWireSphere(feet.position, groundDistance);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(castOrigin, controller.radius + jumpOffset);
     }
