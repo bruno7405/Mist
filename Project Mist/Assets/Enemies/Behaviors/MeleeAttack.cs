@@ -52,10 +52,11 @@ public class MeleeAttack : State
 
     private void DamageTick()
     {
-        Collider[] players = Physics.OverlapSphere(center.position, radius, 3); // Layer Mask 3 = player
+        Collider[] players = Physics.OverlapSphere(center.position, radius, LayerMask.GetMask("Player")); // Layer Mask 3 = player
         foreach (var player in players)
         {
-            this.player.GetComponent<PlayerManager>().TakeDamage(damage);
+            if (player.TryGetComponent<PlayerManager>(out PlayerManager playerManager))
+                playerManager.TakeDamage(damage);
         }
     }
 

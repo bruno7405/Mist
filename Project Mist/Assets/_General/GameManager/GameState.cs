@@ -6,6 +6,8 @@ public class GameState : State
 {
     [SerializeField] Transform levelSpawn;
     [SerializeField] List<Collider> borderColliders = new List<Collider>();
+    [SerializeField] List<Transform> monsterSpawns = new List<Transform>();
+    [SerializeField] List<Transform> monsters = new List<Transform>();
     [SerializeField] GameState nextState;
 
     // Player Reference
@@ -34,7 +36,6 @@ public class GameState : State
     public void ResetLevel()
     {
         Debug.Log("Resetting Level");
-
         playerController.enabled = false;
         player.transform.position = levelSpawn.position;
         player.transform.rotation = levelSpawn.rotation;
@@ -42,8 +43,6 @@ public class GameState : State
 
         // Fade from black (?)
 
-        // Input enabled
-        PlayerInput.active = true;
     }
 
     public void ProgressToNextLevel()

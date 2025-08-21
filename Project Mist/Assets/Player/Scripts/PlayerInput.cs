@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 lookInput;
 
 
-    public static bool active = true;
+    public bool active = true;
     public bool inventoryOpen = false;
 
     private PlayerMovement playerMovement;
