@@ -13,14 +13,21 @@ public class PlayerLook : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    public Vector3 recoilRotation;
+
 
     void Start()
     {
         player = this.gameObject;
+        recoilRotation = Vector3.zero;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void Update()
+    {
+        
+    }
 
     public void HandleRotation(Vector2 lookInput)
     {
@@ -33,7 +40,7 @@ public class PlayerLook : MonoBehaviour
         // Look up and down
         yRotation -= lookInput.y * sensitivity;
         yRotation = Mathf.Clamp(yRotation, -80f, 85f);
-        cameraHolder.transform.localRotation = Quaternion.Euler(yRotation, 0, 0);
+        cameraHolder.transform.localRotation = Quaternion.Euler(yRotation + recoilRotation.x, recoilRotation.y, 0);
     }
 
     public void ChangeActiveState()

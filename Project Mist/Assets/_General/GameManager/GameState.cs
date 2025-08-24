@@ -24,7 +24,6 @@ public class GameState : State
     {
         if (player == null) player = PlayerManager.instance;
         if (playerController == null) playerController = player.GetComponent<CharacterController>();
-        ResetLevel();
     }
 
     public override void OnUpdate()
@@ -48,6 +47,7 @@ public class GameState : State
     public void ProgressToNextLevel()
     {
         Debug.Log("Progressing to Next Level");
+
         stateMachine.SetNewState(nextState);
     }
 }

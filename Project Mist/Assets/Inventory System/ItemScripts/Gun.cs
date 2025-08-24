@@ -20,6 +20,16 @@ public class Gun : MonoBehaviour, IEquippable
     [SerializeField] int totalAmmo = 90;
     [SerializeField] float reloadTime = 2f;
 
+    [Header("Recoil")]
+    [SerializeField] float recoilX;
+    [SerializeField] float recoilY;
+    [SerializeField] float recoilZ;
+    [SerializeField] float recoilSnappiness;
+    [SerializeField] float recoilReturnSpeed;
+    private Vector3 currentRotation;
+    private Vector3 targetRotation;
+    PlayerLook playerLook;
+
     [Header("Effects")]
     [SerializeField] Animator animator;
     [SerializeField] AudioSource audioSource;
@@ -29,6 +39,7 @@ public class Gun : MonoBehaviour, IEquippable
     [SerializeField] MuzzleFlash muzzleFlashLight;
     [SerializeField] ParticleSystem muzzleFlashParticles;
     [SerializeField] TrailRenderer bulletTrail;
+
 
     private int currentAmmo;
     private bool isFiring = false;
@@ -40,7 +51,10 @@ public class Gun : MonoBehaviour, IEquippable
 
     void Start()
     {
+        playerManager = PlayerManager.instance;
+        playerLook = playerManager.GetComponent<PlayerLook>();
         currentAmmo = magazineSize;
+        cam = transform.parent.parent;
     }
 
     public void UseItem()
@@ -85,6 +99,11 @@ public class Gun : MonoBehaviour, IEquippable
             }
         }
 
+        // Recoil Rotations
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, recoilReturnSpeed * Time.deltaTime);
+        currentRotation = Vector3.Slerp(currentRotation, targetRotation, recoilSnappiness * Time.deltaTime);
+        playerLook.recoilRotation = currentRotation;
+
 
     }
 
@@ -124,6 +143,9 @@ public class Gun : MonoBehaviour, IEquippable
         var trail = Instantiate(bulletTrail, firePoint.position, Quaternion.LookRotation(hit.normal));
         StartCoroutine(SpawnTrail(trail, hit));
         */
+
+        // Recoil
+        targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), Random.Range(-recoilZ, recoilZ));
 
         // Sound Effects
         animator.SetTrigger("shoot");
