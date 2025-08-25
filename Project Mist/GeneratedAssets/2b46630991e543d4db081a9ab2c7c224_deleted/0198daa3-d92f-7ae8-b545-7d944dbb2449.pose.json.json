@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa3-d92f-7ae8-b545-7d944dbb2449.pose.json",
+    "prompt": "Monster limping walk, looping, in-place",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1714602651,
+    "w3CTraceId": "3a0806051d3e9bdc24a6601452f66bdd",
+    "isTrimmed": false
+}

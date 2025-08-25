@@ -16,6 +16,6 @@ MonoBehaviour:
   name: Handgun
   description: 
   maxStackSize: 1
-  itemImage: {fileID: 1664934035, guid: 8375eb145d9c4a542a2840f3e823efc5, type: 3}
-  droppedItem: {fileID: 3687528494695031418, guid: b8ed19c08ced79c4ebba77f9c2977497, type: 3}
+  itemImage: {fileID: -107215976, guid: b85f67ce9792f0e45b71d1cbbf7395f4, type: 3}
+  droppedItem: {fileID: 4736589979690654724, guid: fe43b1b98224f2d4eaf9377b16488c07, type: 3}
   equippedItem: {fileID: 4736589979690654724, guid: e2c18e4f3e5ccd74cb28e006923cee3d, type: 3}

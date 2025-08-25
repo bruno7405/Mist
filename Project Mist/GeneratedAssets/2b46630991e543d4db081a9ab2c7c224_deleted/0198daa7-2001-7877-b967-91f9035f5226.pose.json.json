@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa7-2001-7877-b967-91f9035f5226.pose.json",
+    "prompt": "monster look around looping",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1922029667,
+    "w3CTraceId": "87fadb423febc98744c944c4e0b42513",
+    "isTrimmed": false
+}

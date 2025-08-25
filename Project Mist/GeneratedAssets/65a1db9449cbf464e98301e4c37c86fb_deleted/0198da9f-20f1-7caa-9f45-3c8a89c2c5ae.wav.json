@@ -1,0 +1,13 @@
+{
+    "asset": "65a1db9449cbf464e98301e4c37c86fb",
+    "fileName": "0198da9f-20f1-7caa-9f45-3c8a89c2c5ae.wav",
+    "prompt": "Monster growl",
+    "negativePrompt": "low",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "0722fe3c3559861c723d5221b6ea44e1",
+    "duration": 2.0,
+    "autoTrim": true,
+    "hasReference": false
+}

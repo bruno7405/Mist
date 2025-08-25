@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa3-440c-7ba0-8c88-9e102e7695ee.pose.json",
+    "prompt": "Monster limping walk",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1288258455,
+    "w3CTraceId": "ca063f3dc2e50f5a9217adaf40855d52",
+    "isTrimmed": false
+}

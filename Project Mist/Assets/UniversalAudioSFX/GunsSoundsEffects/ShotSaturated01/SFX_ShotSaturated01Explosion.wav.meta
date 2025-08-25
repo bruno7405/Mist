@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 07f3c3c31c84fd14892ef85990372fb7
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 287786
+  packageName: Universal Audio Bundle
+  packageVersion: 4.0
+  assetPath: Assets/UniversalAudioSFX/GunsSoundsEffects/ShotSaturated01/SFX_ShotSaturated01Explosion.wav
+  uploadId: 767338

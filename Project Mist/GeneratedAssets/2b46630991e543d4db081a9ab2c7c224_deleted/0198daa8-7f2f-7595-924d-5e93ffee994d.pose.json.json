@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa8-7f2f-7595-924d-5e93ffee994d.pose.json",
+    "prompt": "scary head look around while standing still,  looping",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 2027345541,
+    "w3CTraceId": "e45de9b6eeb127b093e9e833844dc77d",
+    "isTrimmed": false
+}

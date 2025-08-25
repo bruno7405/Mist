@@ -7,6 +7,9 @@ public class EnemyBase : MonoBehaviour
     int currentHealth;
     public int maxHealth;
 
+    [SerializeField] StateMachineManager stateMachine;
+    [SerializeField] State hitState;
+
     private void Awake()    
     {
         currentHealth = maxHealth;
@@ -15,7 +18,8 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(int amt)
     {
         currentHealth -= amt;
-        Debug.Log("Hit");
+
+        stateMachine.SetNewState(hitState);
 
         if (currentHealth <= 0) Death();
     }

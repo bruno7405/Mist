@@ -1,0 +1,13 @@
+{
+    "asset": "65a1db9449cbf464e98301e4c37c86fb",
+    "fileName": "0198daa0-e4e7-741b-8fda-2ac17989e9d2.wav",
+    "prompt": "Monster screech",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "abf48bdcd9b629dcdf9cdabf26ffd798",
+    "duration": 2.0999999046325685,
+    "autoTrim": true,
+    "hasReference": false
+}

@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa5-13cb-7e0e-870f-7643e2e37d27.pose.json",
+    "prompt": "skinscrawler screech",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1504654004,
+    "w3CTraceId": "5efa2af11abc4a9e0ef8695eee93960d",
+    "isTrimmed": false
+}

@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daaa-6850-7739-8954-ab62d89eca27.pose.json",
+    "prompt": "hunched back look around",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 2029376567,
+    "w3CTraceId": "17bf4501412968709ab9121fb0a9cde5",
+    "isTrimmed": false
+}

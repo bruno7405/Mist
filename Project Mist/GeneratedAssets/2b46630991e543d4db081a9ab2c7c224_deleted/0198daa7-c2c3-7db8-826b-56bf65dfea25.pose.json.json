@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa7-c2c3-7db8-826b-56bf65dfea25.pose.json",
+    "prompt": "monster look around while standing still,  looping",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1881291656,
+    "w3CTraceId": "8e0964a5fa90de5b804c087819f874b3",
+    "isTrimmed": false
+}

@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa6-68a7-724b-8ba0-21544fb7791f.pose.json",
+    "prompt": "monster head shake, body shake, angry",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 106426280,
+    "w3CTraceId": "72496be91215bcabead06a0d95b5cf65",
+    "isTrimmed": false
+}

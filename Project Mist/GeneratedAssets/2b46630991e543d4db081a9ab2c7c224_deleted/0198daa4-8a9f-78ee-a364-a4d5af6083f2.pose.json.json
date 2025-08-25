@@ -1,0 +1,11 @@
+{
+    "asset": "2b46630991e543d4db081a9ab2c7c224",
+    "fileName": "0198daa4-8a9f-78ee-a364-a4d5af6083f2.pose.json",
+    "prompt": "Monster aggro",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1665583816,
+    "w3CTraceId": "4005e1b74b87ffc94c7387c829ad5e21",
+    "isTrimmed": false
+}

@@ -12,8 +12,21 @@ public class HighlightObject : MonoBehaviour
     public Color highlightedColor = Color.white;
     static float intensity = 0.25f;
 
+    [SerializeField] GameObject rendererParent;
     [SerializeField] private List<Renderer> renderers;
     List<Material> materials;
+
+    private void Awake()
+    {
+        if (rendererParent != null)
+        {
+            foreach (Renderer r in rendererParent.GetComponentsInChildren<Renderer>())
+            {
+                if (!renderers.Contains(r))
+                    renderers.Add(r);
+            }
+        }
+    }
 
     void Start()
     {
