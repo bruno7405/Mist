@@ -8,32 +8,39 @@ public class Hit : State
     Animator animator;
     NavMeshAgent agent;
     [SerializeField] State chaseState;
+    [SerializeField] AnimationClip hurtAnimClip;
 
-
+    private float clipLength;
+    private float timer = 0;
 
     private void Awake()
     {
         enemy = parent.GetComponent<EnemyBase>();
         animator = enemy.GetComponent<Animator>();
         agent = enemy.GetComponent<NavMeshAgent>();
+        clipLength = hurtAnimClip.length;
     }
 
     public override void OnStart()
     {
-        StopCoroutine(ChaseState());
+        timer = 0;
         agent.isStopped = true;
         animator.SetTrigger("hit");
-        StartCoroutine(ChaseState());
     }
 
     public override void OnUpdate()
     {
-
+        timer += Time.deltaTime;
+        if (timer >= clipLength)
+        {
+            timer = 0;
+            stateMachine.SetNewState(chaseState);
+        }
     }
 
     IEnumerator ChaseState()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(hurtAnimClip.length);
         stateMachine.SetNewState(chaseState);
     }
 

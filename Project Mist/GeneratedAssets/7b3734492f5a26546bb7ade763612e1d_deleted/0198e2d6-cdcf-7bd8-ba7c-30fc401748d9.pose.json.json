@@ -1,0 +1,11 @@
+{
+    "asset": "7b3734492f5a26546bb7ade763612e1d",
+    "fileName": "0198e2d6-cdcf-7bd8-ba7c-30fc401748d9.pose.json",
+    "prompt": "The Grey as the reference for the missing animation component",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 556911225,
+    "w3CTraceId": "07e844b5a8405221ef43786bff3e7a4d",
+    "isTrimmed": false
+}
