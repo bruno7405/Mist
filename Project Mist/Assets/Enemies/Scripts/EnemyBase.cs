@@ -6,27 +6,35 @@ public class EnemyBase : MonoBehaviour
 {
     int currentHealth;
     public int maxHealth;
+    private bool isDead = false;
 
     [SerializeField] StateMachineManager stateMachine;
     [SerializeField] State hitState;
+    [SerializeField] DeathState deathState;
 
     private void Awake()    
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amt)
+    public void TakeDamage(int amt, Vector3 hitPoint, float knockbackForce)
     {
+        if (isDead) return;
+
         currentHealth -= amt;
 
-        stateMachine.SetNewState(hitState);
-
-        if (currentHealth <= 0) Death();
+        if (currentHealth <= 0) // death
+        {
+            isDead = true;
+            deathState.SetHitPoint(hitPoint);
+            deathState.SetHitForce(knockbackForce);
+            stateMachine.SetNewState(deathState);
+            
+        }
+        else // hurt
+        {
+            stateMachine.SetNewState(hitState);
+        }
     }
 
-    private void Death() 
-    {
-        Debug.Log("Dead");
-        Destroy(gameObject);
-    }
 }

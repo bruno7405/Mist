@@ -16,9 +16,6 @@ public class FollowPlayer : State
     // Animation
     Animator animator;
 
-    // Audio
-    AudioSource audioSource;
-
     // Next state
     [SerializeField] State idleState;
     [SerializeField] State meleeAttackState;
@@ -28,7 +25,6 @@ public class FollowPlayer : State
         enemy = parent.GetComponent<EnemyBase>();
         agent = parent.GetComponent<NavMeshAgent>();
         animator = parent.GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     public override void OnStart()
@@ -36,7 +32,6 @@ public class FollowPlayer : State
         player = PlayerManager.instance.player;
         agent.isStopped = false; // allow movement
         animator.SetTrigger("run");
-        audioSource.Play();
     }
 
     public override void OnUpdate()
@@ -48,14 +43,12 @@ public class FollowPlayer : State
         // Attack player when close
         if (distanceFromPlayer <= attackDistance)
         {
-            audioSource.Stop();
             stateMachine.SetNewState(meleeAttackState);
         }
 
         // Idle when too far away
         else if (distanceFromPlayer > aggroDistance)
         {
-            audioSource.Stop();
             stateMachine.SetNewState(idleState);
         }
 

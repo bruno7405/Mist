@@ -64,7 +64,7 @@ public class MeleeWeapon : MonoBehaviour, IEquippable
 
             if (hit.transform.TryGetComponent<EnemyBase>(out EnemyBase enemy))
             {
-                enemy.TakeDamage(attackDamage);
+                //enemy.TakeDamage(attackDamage);
             }
         }
     }

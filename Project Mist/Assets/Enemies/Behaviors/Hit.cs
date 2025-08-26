@@ -37,11 +37,4 @@ public class Hit : State
             stateMachine.SetNewState(chaseState);
         }
     }
-
-    IEnumerator ChaseState()
-    {
-        yield return new WaitForSeconds(hurtAnimClip.length);
-        stateMachine.SetNewState(chaseState);
-    }
-
 }

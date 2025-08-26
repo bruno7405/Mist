@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour, IEquippable
     [SerializeField] enum FireMode { SemiAuto, Automatic, Burst }
     [SerializeField] FireMode fireMode = FireMode.SemiAuto;
     [SerializeField] int damage = 10;
+    [SerializeField] float knockbackForce = 5f;
 
     [SerializeField] Transform firePoint;
     [SerializeField] LayerMask mask;
@@ -137,14 +138,11 @@ public class Gun : MonoBehaviour, IEquippable
 
             if (hit.collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
             {
-                enemy.TakeDamage(damage);
-            }            
+                enemy.TakeDamage(damage, hit.point, knockbackForce);
+            }
+            var trail = Instantiate(bulletTrail, firePoint.position, Quaternion.LookRotation(hit.normal));
+            StartCoroutine(SpawnTrail(trail, hit));
         }
-
-        
-        var trail = Instantiate(bulletTrail, firePoint.position, Quaternion.LookRotation(hit.normal));
-        StartCoroutine(SpawnTrail(trail, hit));
-        
 
         // Recoil
         targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), Random.Range(-recoilZ, recoilZ));

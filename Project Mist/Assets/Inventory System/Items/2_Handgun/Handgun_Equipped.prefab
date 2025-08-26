@@ -1136,6 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMode: 0
   damage: 10
+  knockbackForce: 300
   firePoint: {fileID: 605546986973785108}
   mask:
     serializedVersion: 2
