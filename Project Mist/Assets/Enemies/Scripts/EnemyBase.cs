@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    int currentHealth;
-    public int maxHealth;
+    [Header("Stats")]
+    [SerializeField] int currentHealth;
+    [SerializeField] int maxHealth;
+    public float aggroDistance = 15;
+    public float attackDistance = 2f;
     private bool isDead = false;
 
     [SerializeField] StateMachineManager stateMachine;
-    [SerializeField] State hitState;
+    [SerializeField] HurtState hitState;
     [SerializeField] DeathState deathState;
 
     private void Awake()    
@@ -33,8 +36,16 @@ public class EnemyBase : MonoBehaviour
         }
         else // hurt
         {
+            hitState.hitPoint = hitPoint;
             stateMachine.SetNewState(hitState);
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, aggroDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
+    }
 }

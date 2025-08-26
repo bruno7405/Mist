@@ -2,16 +2,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Hit : State
+public class HurtState : State
 {
     EnemyBase enemy;
     Animator animator;
     NavMeshAgent agent;
-    [SerializeField] State chaseState;
-    [SerializeField] AnimationClip hurtAnimClip;
 
+    [SerializeField] State chaseState;
+
+    [Header("Effects")]
+    [SerializeField] AnimationClip hurtAnimClip;
+    [SerializeField] ParticleSystem bloodParticles;
     private float clipLength;
     private float timer = 0;
+
+    public Vector3 hitPoint;
+
 
     private void Awake()
     {
@@ -25,7 +31,10 @@ public class Hit : State
     {
         timer = 0;
         agent.isStopped = true;
+        Instantiate(bloodParticles, hitPoint, Quaternion.identity);
         animator.SetTrigger("hit");
+
+
     }
 
     public override void OnUpdate()

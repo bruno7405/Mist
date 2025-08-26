@@ -5,8 +5,8 @@ using UnityEngine.Audio;
 public class FollowPlayer : State
 {
     // Behavior Params
-    [SerializeField] float aggroDistance = 15;
-    [SerializeField] float attackDistance = 2f;
+    private float aggroDistance;
+    private float attackDistance;
 
     // General
     EnemyBase enemy;
@@ -25,6 +25,8 @@ public class FollowPlayer : State
         enemy = parent.GetComponent<EnemyBase>();
         agent = parent.GetComponent<NavMeshAgent>();
         animator = parent.GetComponent<Animator>();
+        aggroDistance = enemy.aggroDistance;
+        attackDistance = enemy.attackDistance;
     }
 
     public override void OnStart()

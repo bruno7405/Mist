@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class Idle : State
 {
     // Behavior Params
-    [SerializeField] float aggroDistance = 15;
-    [SerializeField] float attackDistance = 2f;
+    private float aggroDistance;
+    private float attackDistance;
 
     // General
     EnemyBase enemy;
@@ -24,6 +24,8 @@ public class Idle : State
         enemy = parent.GetComponent<EnemyBase>();
         agent = parent.GetComponent<NavMeshAgent>();
         animator = parent.GetComponent<Animator>();
+        aggroDistance = enemy.aggroDistance;
+        attackDistance = enemy.attackDistance;
     }
 
     public override void OnStart()
@@ -39,13 +41,4 @@ public class Idle : State
         if (distanceFromPlayer <= attackDistance) stateMachine.SetNewState(meleeAttackState);
         else if (distanceFromPlayer <= aggroDistance) stateMachine.SetNewState(followPlayer);
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(parent.transform.position, aggroDistance);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(parent.transform.position, attackDistance);
-    }
-
 }
