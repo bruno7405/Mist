@@ -32,8 +32,8 @@ public class HurtState : State
         timer = 0;
         agent.isStopped = true;
         Instantiate(bloodParticles, hitPoint, Quaternion.identity);
-        animator.SetTrigger("hit");
-
+        //animator.SetFloat("hit", Random.Range(0, 1));
+        animator.SetTrigger("hurt");
 
     }
 
