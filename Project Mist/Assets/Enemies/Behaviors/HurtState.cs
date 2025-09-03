@@ -12,6 +12,7 @@ public class HurtState : State
 
     [Header("Effects")]
     [SerializeField] AnimationClip hurtAnimClip;
+    [SerializeField] int numOfAnimations; // for random animations
     [SerializeField] ParticleSystem bloodParticles;
     private float clipLength;
     private float timer = 0;
@@ -32,7 +33,7 @@ public class HurtState : State
         timer = 0;
         agent.isStopped = true;
         Instantiate(bloodParticles, hitPoint, Quaternion.identity);
-        //animator.SetFloat("hit", Random.Range(0, 1));
+        animator.SetInteger("hurtIndex", Random.Range(0, numOfAnimations));
         animator.SetTrigger("hurt");
 
     }

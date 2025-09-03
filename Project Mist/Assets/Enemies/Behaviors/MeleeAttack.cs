@@ -25,6 +25,7 @@ public class MeleeAttack : State
 
     // Next State
     [SerializeField] State chaseState;
+    [SerializeField] State idleState;
 
     private void Awake()
     {
@@ -74,6 +75,7 @@ public class MeleeAttack : State
     private void TransitionToNextState()
     {
         var distanceFromPlayer = Vector3.Distance(enemy.transform.position, player.transform.position);
+        Debug.Log("Transition");
 
         // Attack player when close
         if (distanceFromPlayer <= attackDistance)
@@ -83,6 +85,11 @@ public class MeleeAttack : State
 
         // Idle when too far away
         else if (distanceFromPlayer > aggroDistance)
+        {
+            stateMachine.SetNewState(idleState);
+        }
+
+        else
         {
             stateMachine.SetNewState(chaseState);
         }
