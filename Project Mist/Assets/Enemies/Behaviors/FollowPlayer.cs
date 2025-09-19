@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class FollowPlayer : State
 {
@@ -19,6 +20,7 @@ public class FollowPlayer : State
     // Next state
     [SerializeField] State idleState;
     [SerializeField] State meleeAttackState;
+    [SerializeField] State deathState;
 
     private void Awake()
     {
@@ -48,12 +50,18 @@ public class FollowPlayer : State
             stateMachine.SetNewState(meleeAttackState);
         }
 
+        if (enemy.isDead)
+        {
+            stateMachine.SetNewState(deathState);
+        }
+
+        /*
         // Idle when too far away
         else if (distanceFromPlayer > aggroDistance)
         {
             stateMachine.SetNewState(idleState);
         }
-
+        */
 
     }
 }

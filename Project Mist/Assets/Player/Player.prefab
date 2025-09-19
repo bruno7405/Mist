@@ -30,8 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8879623167310530957}
+  m_Children: []
   m_Father: {fileID: 5463386490162281571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8650803115754334574
@@ -471,8 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e574945fbccaa4e861dae0d3e927d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camYAmplitude: 0.00509
-  camXAmplitude: 0.00229
+  camYAmplitude: 0.001
+  camXAmplitude: 0.00042
   frequency: 14.7
   cam: {fileID: 655622084045267179}
   cameraHolder: {fileID: 5463386490162281571}
@@ -1071,7 +1070,7 @@ GameObject:
   - component: {fileID: 8819255067892554754}
   - component: {fileID: 9175315514299721399}
   m_Layer: 3
-  m_Name: Point Light
+  m_Name: Feet Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,7 +1085,7 @@ Transform:
   m_GameObject: {fileID: 4861934171915526405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0.46, z: 0.262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1288,12 +1287,12 @@ Transform:
   m_GameObject: {fileID: 6687737186550640322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.25, z: 0.5}
+  m_LocalPosition: {x: 0.25001815, y: -0.25, z: 0.5000251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8225700269455293063}
-  m_Father: {fileID: 655622084045267179}
+  m_Father: {fileID: 5463386490162281571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2090226822504925907
 MonoBehaviour:
@@ -1343,6 +1342,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 655622084045267179}
+  - {fileID: 8879623167310530957}
   m_Father: {fileID: 3398125344996420050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6840422154637770784

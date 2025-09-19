@@ -32,12 +32,14 @@ public class Gun : MonoBehaviour, IEquippable
     private Vector3 targetRotation;
     PlayerLook playerLook;
 
-    [Header("Effects")]
+    [Header("Audio Effects")]
     [SerializeField] Animator animator;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip fireSfx;
-    [SerializeField] AudioClip reloadSfx;
+    [SerializeField] string fireSfx;
+    [SerializeField] string reloadSfx;
     [SerializeField] float firePitchRandomization;
+
+    [Header("Visual Effects")]
     [SerializeField] MuzzleFlash muzzleFlashLight;
     [SerializeField] ParticleSystem muzzleFlashParticles;
     [SerializeField] TrailRenderer bulletTrail;
@@ -149,8 +151,9 @@ public class Gun : MonoBehaviour, IEquippable
 
         // Sound Effects
         animator.SetTrigger("shoot");
-        audioSource.pitch = Random.Range(1 - firePitchRandomization, 1 + firePitchRandomization);
-        audioSource.PlayOneShot(fireSfx);
+        //audioSource.pitch = Random.Range(1 - firePitchRandomization, 1 + firePitchRandomization);
+        //audioSource.PlayOneShot(fireSfx);
+        AudioManager.instance.PlayOneShot(fireSfx, firePitchRandomization);
 
         // Visual Effects
         StartCoroutine(muzzleFlashLight.Flash());
@@ -191,7 +194,7 @@ public class Gun : MonoBehaviour, IEquippable
     IEnumerator ReloadRoutine()
     {
         isReloading = true;
-        audioSource.PlayOneShot(reloadSfx);
+        AudioManager.instance.PlayOneShot(reloadSfx);
 
         animator.speed = 1f / reloadTime;
         animator.SetTrigger("reload");

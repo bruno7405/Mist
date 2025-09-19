@@ -17,10 +17,6 @@ public class InventoryMouseSlotUI : MonoBehaviour
 
     private Vector2 offset = new Vector2 (10, -10);
 
-    bool isActive = false;
-
-    public PlayerEquip playerEquip;
-
     private void Start()
     {
         // Clear visuals
@@ -31,7 +27,6 @@ public class InventoryMouseSlotUI : MonoBehaviour
 
     private void Update()
     {
-
         if (itemData == null) return;
 
         // Follow mouse
@@ -43,13 +38,10 @@ public class InventoryMouseSlotUI : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 // Drop item
-                //ItemSpawnManager.instance.SpawnItemOnPlayer(itemData, quantity);
                 PlayerEquip.instance.DropItem(itemData, quantity);
                 Clear();
             }
         }
-
-        
     }
 
     public void SetItem(ItemData itemData, int amt)

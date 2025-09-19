@@ -70,8 +70,8 @@ MonoBehaviour:
   recoilReturnSpeed: 4
   animator: {fileID: 8443967278918094662}
   audioSource: {fileID: 7764420386596720217}
-  fireSfx: {fileID: 8300000, guid: 68a0c1a5561ec80409d8e72f715f555c, type: 3}
-  reloadSfx: {fileID: 8300000, guid: 7e3027ea90854d14bb55438eb3405ac1, type: 3}
+  fireSfx: MachinegunShot
+  reloadSfx: MachinegunReload
   firePitchRandomization: 0.04
   muzzleFlashLight: {fileID: 540587757309476591}
   muzzleFlashParticles: {fileID: 1690030643001689860}

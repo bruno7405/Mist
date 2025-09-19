@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Simulates a player headbob by changing the transform of the cam reference object (not camHolder)
+/// </summary>
 public class PlayerHeadBob : MonoBehaviour
 {
     [SerializeField, Range(0, 0.01f)] private float camYAmplitude = 0.015f;

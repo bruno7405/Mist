@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] int maxHealth;
     public float aggroDistance = 15;
     public float attackDistance = 2f;
-    private bool isDead = false;
+    public bool isDead = false;
 
     [SerializeField] StateMachineManager stateMachine;
     [SerializeField] HurtState hitState;

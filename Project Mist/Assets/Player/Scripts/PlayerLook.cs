@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Rotates the cameraHolder gameobject that the cinemachine camera tracks
+/// Based on mouse movement and recoil from guns
+/// </summary>
 public class PlayerLook : MonoBehaviour
 {
     private GameObject player;

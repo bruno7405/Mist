@@ -1154,8 +1154,8 @@ MonoBehaviour:
   recoilReturnSpeed: 5
   animator: {fileID: 4537460012375622011}
   audioSource: {fileID: 3257445393919440700}
-  fireSfx: {fileID: 8300000, guid: 45f1b6ba33d98b849aa33fec0d9d9078, type: 3}
-  reloadSfx: {fileID: 8300000, guid: 7e474a4fcdeb7564ba7886d932123a9b, type: 3}
+  fireSfx: HandgunShot
+  reloadSfx: HandgunReload
   firePitchRandomization: 0.06
   muzzleFlashLight: {fileID: 4097347279563142117}
   muzzleFlashParticles: {fileID: 1993931383861556760}

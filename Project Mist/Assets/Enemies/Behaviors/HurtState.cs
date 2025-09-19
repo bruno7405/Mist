@@ -10,7 +10,11 @@ public class HurtState : State
 
     [SerializeField] State chaseState;
 
-    [Header("Effects")]
+    [Header("Sound Effects")]
+    AudioManager audioManager;
+    [SerializeField] string hurtSfx;
+
+    [Header("Visual Effects")]
     [SerializeField] AnimationClip hurtAnimClip;
     [SerializeField] int numOfAnimations; // for random animations
     [SerializeField] ParticleSystem bloodParticles;
@@ -28,6 +32,12 @@ public class HurtState : State
         clipLength = hurtAnimClip.length;
     }
 
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
+
+
     public override void OnStart()
     {
         timer = 0;
@@ -35,6 +45,7 @@ public class HurtState : State
         Instantiate(bloodParticles, hitPoint, Quaternion.identity);
         animator.SetInteger("hurtIndex", Random.Range(0, numOfAnimations));
         animator.SetTrigger("hurt");
+        audioManager.PlayOneShot(hurtSfx, 0.1f);
 
     }
 

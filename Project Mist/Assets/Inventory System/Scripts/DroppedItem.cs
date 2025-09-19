@@ -26,6 +26,8 @@ public class DroppedItem : MonoBehaviour, IInteractable
             }
         }
 
+        AudioManager.instance.PlayOneShot("PickupItem", 0.2f);
+
         Destroy(gameObject);
     }
 

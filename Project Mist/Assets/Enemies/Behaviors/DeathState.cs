@@ -13,6 +13,8 @@ public class DeathState : State
     public override void OnStart()
     {
         Debug.Log("Enemy Died");
+        AudioManager.instance.PlayOneShot("ZombieDeathImpact", 0.05f);
+
         ragdoll.ActivateRagdoll(hitPoint, force);
         StartCoroutine(DeathEffects());
     }
