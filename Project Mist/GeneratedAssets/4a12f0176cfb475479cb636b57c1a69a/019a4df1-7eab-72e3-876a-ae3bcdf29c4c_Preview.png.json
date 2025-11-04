@@ -1,0 +1,11 @@
+{
+    "asset": "4a12f0176cfb475479cb636b57c1a69a",
+    "fileName": "019a4df1-7eab-72e3-876a-ae3bcdf29c4c_Preview.png",
+    "prompt": "night sky dark",
+    "negativePrompt": "stars",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 118798693,
+    "w3CTraceId": "89bd61cd386f0c4b31731cbb87d8a99b",
+    "refinementMode": "Generation"
+}

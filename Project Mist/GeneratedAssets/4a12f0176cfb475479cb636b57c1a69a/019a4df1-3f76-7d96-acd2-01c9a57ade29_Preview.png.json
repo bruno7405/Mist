@@ -1,0 +1,11 @@
+{
+    "asset": "4a12f0176cfb475479cb636b57c1a69a",
+    "fileName": "019a4df1-3f76-7d96-acd2-01c9a57ade29_Preview.png",
+    "prompt": "PSX style night sky",
+    "negativePrompt": "stars",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1196737936,
+    "w3CTraceId": "933a3ec30d0c54a849c564c97030cc83",
+    "refinementMode": "Generation"
+}
