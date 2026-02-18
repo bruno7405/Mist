@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, IEquippable
 {
-    [SerializeField] enum FireMode { SemiAuto, Automatic, Burst }
+    public enum FireMode { SemiAuto, Automatic, Burst }
     [SerializeField] FireMode fireMode = FireMode.SemiAuto;
     [SerializeField] int damage = 10;
     [SerializeField] float knockbackForce = 5f;
