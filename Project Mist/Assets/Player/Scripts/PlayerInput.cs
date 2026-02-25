@@ -16,7 +16,8 @@ public class PlayerInput : MonoBehaviour
     private InputAction sprintAction;
     private InputAction interactAction;
     private InputAction equipAction;
-    private InputAction inventoryAction;
+    private InputAction toggleInventoryAction;
+    private InputAction toggleSettingsAction;
     private InputAction dropItemAction;
     private InputAction useItemAction;
     private Vector2 moveInput;
@@ -24,14 +25,13 @@ public class PlayerInput : MonoBehaviour
 
 
     public bool active = true;
-    public bool inventoryOpen = false;
+    public bool uiOpen = false;
 
     private PlayerMovement playerMovement;
     private PlayerInteractor playerInteraction;
     private PlayerLook playerLook;
     private PlayerEquip playerEquip;
-
-    public UnityEvent ChangeInventoryUIState;
+    private UIController uiController;
 
     [SerializeField] private MuzzleFlash muzzleFlash;
 
@@ -41,8 +41,7 @@ public class PlayerInput : MonoBehaviour
         playerInteraction = GetComponent<PlayerInteractor>();
         playerLook = GetComponent<PlayerLook>();
         playerEquip = GetComponent<PlayerEquip>();
-
-        ChangeInventoryUIState.AddListener(GameObject.Find("UIController").GetComponent<UIController>().UpdateInventoryState);
+        uiController = GameObject.Find("UIController").GetComponent<UIController>();
         
         moveAction = playerControls.FindActionMap("Gameplay").FindAction("Move");
         lookAction = playerControls.FindActionMap("Gameplay").FindAction("Look");
@@ -50,7 +49,8 @@ public class PlayerInput : MonoBehaviour
         sprintAction = playerControls.FindActionMap("Gameplay").FindAction("Sprint");
         interactAction = playerControls.FindActionMap("Gameplay").FindAction("Interact");
         equipAction = playerControls.FindActionMap("Gameplay").FindAction("Equip");
-        inventoryAction = playerControls.FindActionMap("Gameplay").FindAction("Inventory");
+        toggleInventoryAction = playerControls.FindActionMap("Gameplay").FindAction("Inventory");
+        toggleSettingsAction = playerControls.FindActionMap("Gameplay").FindAction("Settings");
         dropItemAction = playerControls.FindActionMap("Gameplay").FindAction("Drop");
         useItemAction = playerControls.FindActionMap("Gameplay").FindAction("Use");
 
@@ -72,13 +72,17 @@ public class PlayerInput : MonoBehaviour
         // Inventory Actions
         interactAction.Enable();
         equipAction.Enable();
-        inventoryAction.Enable();
+        toggleInventoryAction.Enable();
         dropItemAction.Enable();
         useItemAction.Enable();
 
+        // Settings Action
+        toggleSettingsAction.Enable();
+
         interactAction.performed += Interact;
         equipAction.performed += Equip;
-        inventoryAction.performed += Inventory;
+        toggleInventoryAction.started += ToggleInventoryUI;
+        toggleSettingsAction.started += ToggleSettingsUI;
         dropItemAction.performed += DropItem;
         useItemAction.started += UseItem;
         useItemAction.canceled += StopUseItem;
@@ -93,13 +97,15 @@ public class PlayerInput : MonoBehaviour
         sprintAction.Disable();
         interactAction.Disable();
         equipAction.Disable();
-        inventoryAction.Disable();
+        toggleInventoryAction.Disable();
+        toggleSettingsAction.Disable();
         dropItemAction.Disable();
         useItemAction.Disable();
 
         interactAction.started -= Interact;
         equipAction.performed -= Equip;
-        inventoryAction.started -= Inventory;
+        toggleInventoryAction.started -= ToggleInventoryUI;
+        toggleSettingsAction.started -= ToggleSettingsUI;
         dropItemAction.started -= DropItem;
         useItemAction.started -= UseItem;
     }
@@ -114,8 +120,6 @@ public class PlayerInput : MonoBehaviour
         playerLook.HandleRotation(lookInput);
     }
 
-
-
     private void Interact(InputAction.CallbackContext context)
     {
         if (!active) return;
@@ -125,7 +129,7 @@ public class PlayerInput : MonoBehaviour
     private void Equip(InputAction.CallbackContext context)
     {
         if (!active) return;
-        if (inventoryOpen) return;
+        if (uiOpen) return;
 
         var key = context.control.name;
         switch (key)
@@ -148,12 +152,21 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void Inventory(InputAction.CallbackContext context)
+    private void ToggleInventoryUI(InputAction.CallbackContext context)
     {
         if (!active) return;
-        ChangeInventoryUIState.Invoke();
-        playerLook.ChangeActiveState();
-        inventoryOpen = !inventoryOpen;
+        uiController.UpdateInventoryState();
+        uiOpen = !uiOpen;
+        playerLook.SetCanPlayerLook(!uiOpen);
+    }
+
+    private void ToggleSettingsUI(InputAction.CallbackContext context)
+    {
+        if (!active) return;
+        uiController.UpdateSettingsState();
+        uiOpen = !uiOpen;
+        playerLook.SetCanPlayerLook(!uiOpen);
+
     }
 
     private void DropItem(InputAction.CallbackContext context)

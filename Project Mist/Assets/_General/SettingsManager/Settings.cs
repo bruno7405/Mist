@@ -1,19 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Settings : MonoBehaviour
+[CreateAssetMenu]
+public class Settings : ScriptableObject
 {
-    [SerializeField] float sensitivity;
-    [SerializeField] float volume;
+    public float sensitivity;
+    public float volume;
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public UnityEvent OnSettingsChanged;
 }

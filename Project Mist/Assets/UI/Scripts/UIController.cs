@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     public GameObject inventoryCanvas;
+    public GameObject settingsCanvas;
 
     private void Awake()
     {
@@ -23,24 +24,48 @@ public class UIController : MonoBehaviour
     /// </summary>
     public void UpdateInventoryState()
     {
-        if (inventoryCanvas.active)
+        if (inventoryCanvas.activeInHierarchy)
         {
-            CloseInventory();
+            CloseInventoryUI();
         }
-        else OpenInventory();
+        else OpenInventoryUI();
     }
 
-    private void OpenInventory()
+    private void OpenInventoryUI()
     {
         Cursor.lockState = CursorLockMode.Confined;
         inventoryCanvas.SetActive(true);
     }
 
-    private void CloseInventory()
+    private void CloseInventoryUI()
     {
         Cursor.lockState = CursorLockMode.Locked;
         inventoryCanvas.SetActive(false);
     }
-    
+
+    #endregion
+
+
+    #region Settings UI
+    public void UpdateSettingsState()
+    {
+        if(settingsCanvas.activeInHierarchy) CloseSettingsUI();
+        else OpenSettingsUI();
+    }
+
+    private void OpenSettingsUI()
+    {
+        Debug.Log("setting");
+
+        Cursor.lockState = CursorLockMode.Confined;
+        settingsCanvas.SetActive(true);
+    }
+
+    private void CloseSettingsUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        settingsCanvas.SetActive(false);
+    }
+
     #endregion
 }

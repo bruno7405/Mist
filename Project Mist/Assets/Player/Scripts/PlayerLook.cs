@@ -47,10 +47,12 @@ public class PlayerLook : MonoBehaviour
         cameraHolder.transform.localRotation = Quaternion.Euler(yRotation + recoilRotation.x, recoilRotation.y, 0);
     }
 
-    public void ChangeActiveState()
+    /// <summary>
+    /// Toggles the player's ability to look around
+    /// </summary>
+    public void SetCanPlayerLook(bool canLook)
     {
-        if (canLookAround) canLookAround = false;
-        else canLookAround = true;
+        canLookAround = canLook;
     }
 
     public void LookAt(Vector3 lookPoint)
