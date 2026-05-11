@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.Cinemachine;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
